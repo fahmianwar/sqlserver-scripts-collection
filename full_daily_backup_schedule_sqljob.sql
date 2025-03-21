@@ -2,7 +2,7 @@ USE msdb;
 GO
 
 -- ==============================
--- 1. Full Backup Harian
+-- Full Backup Harian
 -- ==============================
 EXEC sp_add_job  
     @job_name = 'Daily Full Backup DB',
@@ -41,4 +41,8 @@ GO
 
 -- Jalankan manual untuk tes Full Backup
 EXEC sp_start_job @job_name = 'Daily Full Backup DB';
+GO
+
+-- Cek status Job
+SELECT job_id, name, enabled FROM msdb.dbo.sysjobs WHERE name LIKE 'Daily%Backup%';
 GO
