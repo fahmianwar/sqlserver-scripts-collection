@@ -1,0 +1,14 @@
+-- Mengecilkan database untuk mengembalikan ruang kosong
+DBCC SHRINKDATABASE (NamaDatabase);
+
+-- Mengecilkan file data tertentu (contoh: file data utama)
+DBCC SHRINKFILE (NamaFileData, target_size_MB);
+
+-- Rebuild semua index agar performa lebih optimal
+ALTER INDEX ALL ON NamaTabel REBUILD;
+
+-- Update statistik agar query lebih efisien
+UPDATE STATISTICS NamaTabel;
+
+-- Opsional: Cek integritas database untuk memastikan tidak ada kerusakan
+DBCC CHECKDB (NamaDatabase);
